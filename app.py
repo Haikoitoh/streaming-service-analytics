@@ -69,7 +69,7 @@ with st.expander("Adjust Chart Settings"):
 
     # Date range selectors
     min_date, max_date = df['ADDED_DATE'].min(), df['ADDED_DATE'].max()
-    start_date = pd.to_datetime(st.date_input("Start Date", value=2024-04-01, min_value=min_date, max_value=max_date, key="start_date"))
+    start_date = pd.to_datetime(st.date_input("Start Date", value=datetime.date(2024, 4, 1), min_value=min_date, max_value=max_date, key="start_date"))
     end_date = pd.to_datetime(st.date_input("End Date", value=max_date, min_value=start_date, max_value=max_date, key="end_date"))
    
     # Streaming service selector (reusing the existing one)
