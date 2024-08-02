@@ -19,8 +19,8 @@ snowflake_config = {
 }
 
 # Establish Snowflake connection
-conn = snowflake.connector.connect(**snowflake_config)
-cur = conn.cursor()
+#conn = snowflake.connector.connect(**snowflake_config)
+#cur = conn.cursor()
 
 # Fetch data
 @st.cache_data
