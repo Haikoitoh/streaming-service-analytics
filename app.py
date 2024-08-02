@@ -19,11 +19,11 @@ snowflake_config = {
 }
 
 # Establish Snowflake connection
-#conn = snowflake.connector.connect(**snowflake_config)
-#cur = conn.cursor()
+conn = snowflake.connector.connect(**snowflake_config)
+cur = conn.cursor()
 
 # Fetch data
-@st.cache_data
+@st.cache_data(ttl=43200)
 def fetch_data():
     cur.execute("""
         SELECT d.title_id, d.title_text, d.imdb_score, d.type, d.release_year, d.tv_rating,
