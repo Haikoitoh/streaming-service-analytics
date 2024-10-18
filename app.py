@@ -59,7 +59,7 @@ services = df['STREAMING_SERVICE'].unique()
 selected_services = st.sidebar.multiselect("Select Streaming Services", services, default=services)
 content_types = df['TYPE'].unique()
 selected_types = st.sidebar.multiselect("Select Content Type", content_types, default=content_types)
-filtered_df = df[(df['STREAMING_SERVICE'].isin(selected_services)) & (df['TYPE'].isin(selected_types))]
+df = df[(df['STREAMING_SERVICE'].isin(selected_services)) & (df['TYPE'].isin(selected_types))]
 
 # Charts
 st.markdown("## Content Added Over Time")
@@ -74,12 +74,14 @@ with st.expander("Adjust Chart Settings"):
     end_date = pd.to_datetime(st.date_input("End Date", value=max_date, min_value=start_date, max_value=max_date, key="end_date"))
    
     # Streaming service selector (reusing the existing one)
+    """
     selected_services_time = st.multiselect(
         "Select Streaming Services",
         services,
         default=services,
         key="services_for_time_chart"
     )
+    """
 
     # Aggregation method
     agg_method = st.selectbox(
@@ -91,8 +93,7 @@ with st.expander("Adjust Chart Settings"):
 # Filter data based on date range and selected services
 filtered_df_time = df[
     (df['ADDED_DATE'] >= start_date) &
-    (df['ADDED_DATE'] <= end_date) &
-    (df['STREAMING_SERVICE'].isin(selected_services_time))
+    (df['ADDED_DATE'] <= end_date))
 ]
 gdf = filtered_df_time.copy()
 filtered_df = filtered_df_time.drop(columns=['GENRE_NAME'])
