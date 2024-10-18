@@ -93,7 +93,7 @@ with st.expander("Adjust Chart Settings"):
 # Filter data based on date range and selected services
 filtered_df_time = df[
     (df['ADDED_DATE'] >= start_date) &
-    (df['ADDED_DATE'] <= end_date))
+    (df['ADDED_DATE'] <= end_date)
 ]
 gdf = filtered_df_time.copy()
 filtered_df = filtered_df_time.drop(columns=['GENRE_NAME'])
